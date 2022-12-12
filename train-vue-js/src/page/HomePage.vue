@@ -5,12 +5,14 @@
       <div class="wrapper--input">
         <input v-model="recherche_resto_util" type="text" name="" id="" placeholder="De quoi avez vous envie ?">
         <div class="search">
-          <div v-for="(resto,index) in search_resto" :key="index" class="container--restaurant--search">
-            <div class="wrapper--img">
-              <img :src="resto.image" alt="" srcset="">
+          <router-link v-for="(resto,index) in search_resto" :key="index" :to="{name: 'Restaurant', params:{ resto: resto.name}}">
+            <div  class="container--restaurant--search">
+              <div class="wrapper--img">
+                <img :src="resto.image" alt="" srcset="">
+              </div>
+              <p>{{resto.name}}</p>
             </div>
-            <p>{{resto.name}}</p>
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -69,11 +71,10 @@
       watch(recherche_resto_util, (new_value) => {
         let regex = RegExp(new_value, 'i');
         let filtre = tous_les_resto.filter(resto => regex.test(resto.name));
-        if(new_value == 0){
-          search_resto.value =[];
-        }
-        else{
-          search_resto.value =filtre;
+        if (new_value == 0) {
+          search_resto.value = [];
+        } else {
+          search_resto.value = filtre;
         }
       })
 
@@ -118,16 +119,20 @@
           width: 100%;
           background-color: #ffff;
 
-          .container--restaurant--search{
+          .container--restaurant--search {
             display: flex;
             align-items: center;
-            .wrapper--img{
+            text-decoration: none;
+
+
+            .wrapper--img {
               height: 40px;
               width: 40px;
               margin-right: 25px;
               border-radius: 50%;
               overflow: hidden;
-              img{
+
+              img {
                 height: 100%;
                 width: auto;
               }

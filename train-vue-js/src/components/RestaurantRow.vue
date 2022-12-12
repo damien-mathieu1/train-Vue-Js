@@ -4,18 +4,22 @@
       Nos restaurants  
     </h2>
     <div class="wrapper--card">
-        <restaurant-card v-for="(card,index) in three_restaurant" :info_restaurant="card" :key="index"/>
+        <RouterLink v-for="(card,index) in three_restaurant" :info_restaurant="card" :key="index" :to="{ name : 'Restaurant', params: { resto: card.name}}">
+            <restaurant-card :info_restaurant="card"/>
+        </RouterLink>
     </div>
    </div>
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
 import RestaurantCard from "./RestaurantCard.vue"
 export default {
     name : "RestaurantRow",
     components  :{
-        RestaurantCard
-    },
+    RestaurantCard,
+    RouterLink
+},
     props:{
         three_restaurant : Array,
     }
