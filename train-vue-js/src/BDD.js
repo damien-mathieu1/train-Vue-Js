@@ -49,7 +49,7 @@
           drive_time: '20 - 30mn'
         },
         {
-          name: 'Burger\'s Friens',
+          name: 'Burger\'s Friends',
           image: 'https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly9kMXJhbHNvZ25qbmczNy5jbG91ZGZyb250Lm5ldC81Mzk3YWEzOC0yYjRhLTRmOTItYmU4Ny1kZDE5YWEzNGU4MTQuanBlZw==',
           note: '3.8',
           drive_time: '30 - 40mn'
